@@ -5,8 +5,8 @@ import './App.css';
 
 const AdventCalendar = () => {
   const currentDate = new Date();
-//  const currentDay = currentDate.getDate();
-  const currentDay = 25;
+  const currentDay = currentDate.getDate();
+
   // Tableau des chaînes de caractères pour chaque porte
   const doorTexts = [
     "Qu’il fait doux en cette fin d’automne sur cette terrasse en pierre de ce petit mas ardéchois. De l’air frais qui remonte de la combe du Renard. Quelques bougies sont allumées pour éclairer les sourires.",
