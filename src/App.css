@@ -1,38 +1,105 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@300&display=swap');
+
+:root {
+  --background-color: #F9ED69;
+  --border-color: #F08A5D;
+  --text-color: #B83B5E;
+  --box-shadow-color: #6A2C70;
+  --hover-background-color: #6A2C70;
+  --hover-border-color: #F08A5D;
+  --hover-text-color: #F9ED69;
+  --hover-box-shadow-color: #B83B5E;
+  --open-background-color: #F08A5D;
+  --open-border-color: #B83B5E;
+  --open-text-color: #6A2C70;
+}
+
+
+html, body
+{
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+body {
+  font-family: 'Exo', sans-serif;
+  height: 100%;
+  background:       
+  linear-gradient(190deg, transparent, 60%, var(--background-color)),
+  linear-gradient(80deg, transparent, 80%, var(--border-color)),
+  linear-gradient(350deg, transparent, 50%, var(--box-shadow-color)),
+  linear-gradient(170deg, transparent, 50%, var(--text-color)),
+  repeating-radial-gradient(circle at center, var(--text-color), 10%, var(--box-shadow-color), var(--text-color) 50%, var(--box-shadow-color), 75%, var(--text-color) 100%);
+  min-height: 90vh; /* fix for body bigger than viewport. do not set width */
+  color: var(--background-color);
+  font-weight: bold;
+  margin-bottom: 0;
+  
+}
+
+
+
+
+.advent-calendar {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  height: 100vh; /* 100% de la hauteur de la fenêtre */
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.door-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Vous avez actuellement 4 colonnes égales, vous pouvez ajuster le nombre de colonnes et leur largeur ici */
+  gap: 10px;
+  justify-content: center;
+  text-align: center;
+  width: 100%; /* La grille occupe 100% de la largeur de la div parente */
+  height: 100%; 
+  margin: 0 auto; /* Pour centrer la grille horizontalement */
+}
+
+
+
+
+
+.advent-door {
+  width: 100%;
+  height: 100%;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  box-sizing: border-box;
+  justify-self: center;
+  border: 10px inset var(--border-color);
+  border-radius: 0.1em;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  box-shadow: 1.6em 0.6em 2em 0.5em var(--box-shadow-color), 0 0 0.4em 0.4em cyan;
+  box-shadow: 0 0 10em 10em transparent;
+  transition: color 0.25s, background-color 0.3s, box-shadow 0.4s, font-weight 0.35s, border 0.3s;
+  animation-name: cardanimation;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
 }
 
-.App-link {
-  color: #61dafb;
+
+
+.advent-door.open {
+  background-color: var(--open-background-color); /* Couleur de fond différente pour les cases ouvertes */
+  color: var(--open-text-color);
+  border: 10px inset var(--open-border-color);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.advent-door:hover {
+  color: var(--hover-text-color);
+  border: 10px outset var(--hover-border-color);
+  background-color: var(--hover-background-color);
+  box-shadow: 0 0 0.4em 0.4em var(--hover-box-shadow-color);
+  font-weight: bold;
 }
